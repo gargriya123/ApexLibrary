@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" th:replace="base::layout(~{::section})">
+<head>
+    <meta charset="UTF-8">
+    <title>Login</title>
+
+</head>
+<body>
+
+<section>
+    <div class="container p-5">
+        <div class="row">
+            <div class="col-md-6 offset-md-3">
+                <div class="card">
+                    <div class="text-center">
+                        <img style="width:80px;" scr="" th:src="@{/img/registrr.jpg}"/>
+                    </div>
+                    <div class="card-header text-center fs-4 bg-white">
+                        Login!!
+                    </div>
+                    <div th:if="${session.msg1}">
+                        <p class="text-center fs-4 text-success" th:text="${session.msg1}"></p>
+                        <th:block th:text="${@sessionHelper.removeMessageFromSession()}"></th:block>
+                    </div>
+                    <div class="card-body">
+                       <form th:action="@{/do_login}" th:method="post">
+                            <div class="mb-3">
+                                <div class="form-group">
+                                    <label for="email">Enter Email</label>
+                                    <input id="email" type="email" class="form-control" name="email" placeholder="Enter your email"/>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="pass">Enter Password</label>
+                                        <input id="pass" type="password" class="form-control" name="password" placeholder="Enter your password"
+                                        />
+                                    </div>
+                                <div class="form-group">
+                                    <label for="remember" class="text-info"><span>Remember me</span></label>
+                                    <input type="checkbox" id="remember" name="remember" required/>
+                                    <br>
+                                    <button type="submit" class="btn btn-primary text-white">Login</button>
+                                    <button type="submit" class="btn btn-success text-white "><a style="text-decoration:none;" class="text-white" href="register">Register</a></button>
+                                </div>
+
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+</body>
+</html>

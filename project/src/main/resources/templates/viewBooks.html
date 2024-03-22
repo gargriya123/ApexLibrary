@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" th:replace="front::layout(~{::section})">
+<head>
+    <meta charset="UTF-8">
+    <title>view Books</title>
+</head>
+<body>
+<section>
+
+    <div class="card mr-3 ml-3">
+        <div class="card-body">
+            <h1 class="text-center">View Books</h1>
+            <div th:if="${session.msg6}">
+                <p class="text-center fs-4 text-success" th:text="${session.msg6}"></p>
+                <th:block th:text="${@sessionHelper.removeMessageFromSession()}"></th:block>
+            </div>
+            <div th:if="${session.msg8}">
+                <p class="text-center fs-4 text-success" th:text="${session.msg8}"></p>
+                <th:block th:text="${@sessionHelper.removeMessageFromSession()}"></th:block>
+            </div>
+            <table class="table table-striped table-bordered">
+                <thead class="table-dark">
+                <tr>
+                    <th scope="col">#ID</th>
+                    <th scope="col">ISBN</th>
+                    <th scope="col">Title</th>
+                    <th scope="col">Author</th>
+                    <th scope="col">Edition</th>
+                    <th scope="col">Price</th>
+                    <th scope="col">Quantity</th>
+                    <th scope="col">Actions</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr th:each="book:${books}">
+                    <td th:text="${book.id}"></td>
+                    <td th:text="${book.isbn}"></td>
+                    <td th:text="${book.title}"></td>
+                    <td th:text="${book.author}"></td>
+                    <td th:text="${book.edition}"></td>
+                    <td th:text="${book.price}"></td>
+                    <td th:text="${book.quantity}"></td>
+                    <td>
+                        <form th:method="get" th:action="@{/updateBook/{id}(id=${book.id})}" class="mt-2">
+                            <button type="submit" value="submit" class="btn btn-primary btn-sm">Update</button>
+                        </form>
+                        <form th:method="get" th:action="@{/deleteBook/{id}(id=${book.id})}"  class="mt-2">
+                            <button type="submit" value="submit" class="btn btn-danger btn-sm">Delete</button>
+                        </form>
+
+                    </td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</section>
+</body>
+</html>

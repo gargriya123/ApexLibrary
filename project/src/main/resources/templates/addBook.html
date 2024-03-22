@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" th:replace="front::layout(~{::section})">
+<head>
+    <meta charset="UTF-8">
+    <title>addBook</title>
+</head>
+<body>
+<section>
+    <div class="card mr-3 ml-3">
+        <div class="card-body">
+            <h1 class="text-center">Add Book!!</h1>
+            <div th:if="${session.msg5}">
+                <p class="text-center fs-4 text-success" th:text="${session.msg5}"></p>
+                <th:block th:text="${@sessionHelper.removeMessageFromSession()}"></th:block>
+            </div>
+            <div class="container-fluid mt-1">
+                <div class="row">
+                    <div class="col-md-8 offset-md-2">
+                        <form action="#" th:object="${bookdto}" th:method="post" th:action="@{/addBook}" class="mt-2">
+                            <div class="input-group">
+                                <div class="input-group-prepend">
+                                    <div class="input-group-text">
+                                        <i class="fa fa-plus"></i>
+                                    </div>
+                                </div>
+                                <input type="text" id="isbn" name="isbn" placeholder="Enter ISBN" class="form-control"
+                                       th:field="${bookdto.isbn}"
+                                       th:classappend="${#fields.hasErrors('isbn')?'is-invalid':''}"
+                                />
+                                <div th:each="e:${#fields.errors('isbn')}" th:text="${e}" class="invalid-feedback">
+                                </div>
+                            </div>
+                            <div class="input-group mt-3">
+                                <div class="input-group-prepend">
+                                    <div class="input-group-text">
+                                        <i class="fa fa-plus"></i>
+                                    </div>
+                                </div>
+                                <input type="text" id="title" name="title" placeholder="Enter Title" class="form-control"
+                                       th:field="${bookdto.title}"
+                                       th:classappend="${#fields.hasErrors('title')?'is-invalid':''}"/>
+                                <div th:each="e:${#fields.errors('title')}" th:text="${e}" class="invalid-feedback">
+                                </div>
+                            </div>
+
+                            <div class="input-group mt-3">
+                                <div class="input-group-prepend">
+                                    <div class="input-group-text">
+                                        <i class="fa fa-plus"></i>
+                                    </div>
+                                </div>
+                                <input type="text" id="author" name="author" placeholder="Enter Author" class="form-control"
+                                       th:field="${bookdto.author}"
+                                       th:classappend="${#fields.hasErrors('author')?'is-invalid':''}"
+                                />
+                                <div th:each="e:${#fields.errors('author')}" th:text="${e}" class="invalid-feedback">
+                                </div>
+                            </div>
+                            <div class="input-group mt-3">
+                                <div class="input-group-prepend">
+                                    <div class="input-group-text">
+                                        <i class="fa fa-plus"></i>
+                                    </div>
+                                </div>
+                                <input type="number" id="edition" name="edition" placeholder="Enter Edition" class="form-control"
+                                       th:field="${bookdto.edition}"
+                                       th:classappend="${#fields.hasErrors('edition')?'is-invalid':''}"
+                                />
+                                <div th:each="e:${#fields.errors('edition')}" th:text="${e}" class="invalid-feedback">
+                                </div>
+                            </div>
+                            <div class="input-group mt-3">
+                                <div class="input-group-prepend">
+                                    <div class="input-group-text">
+                                        <i class="fa fa-plus"></i>
+                                    </div>
+                                </div>
+                                <input type="number" id="price" name="price" placeholder="Enter price" class="form-control"
+                                       th:field="${bookdto.price}"
+                                       th:classappend="${#fields.hasErrors('price')?'is-invalid':''}"
+                                />
+                                <div th:each="e:${#fields.errors('price')}" th:text="${e}" class="invalid-feedback">
+                                </div>
+
+                            </div>
+                            <div class="input-group mt-3">
+                                <div class="input-group-prepend">
+                                    <div class="input-group-text">
+                                        <i class="fa fa-plus"></i>
+                                    </div>
+                                </div>
+                                <input type="number" id="quantity" name="quantity" placeholder="Enter Quantity" class="form-control"
+                                       th:field="${bookdto.quantity}"
+                                       th:classappend="${#fields.hasErrors('quantity')?'is-invalid':''}"
+                                />
+                                <div th:each="e:${#fields.errors('quantity')}" th:text="${e}" class="invalid-feedback">
+                                </div>
+
+                            </div>
+
+                            <div class="container text-center">
+                                <button class="btn btn-outline-primary">Add Book</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</section>
+</body>
+</html>

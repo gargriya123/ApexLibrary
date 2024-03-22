@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" th:replace="front::layout(~{::section})">
+<head>
+    <meta charset="UTF-8">
+    <title>update book</title>
+</head>
+<body>
+<section>
+    <div class="card mr-3 ml-3">
+        <div class="card-body">
+            <h1 class="text-center">Update Book!!</h1>
+
+            <div class="container-fluid mt-1">
+                <div class="row">
+                    <div class="col-md-8 offset-md-2">
+                        <form  th:object="${bookDto}" th:method="post" th:action="@{/updateBook/{id}(id=${book.id})}" class="mt-2">
+                            <div class="input-group">
+                                <div class="input-group-prepend">
+                                    <div class="input-group-text">
+                                        <i class="fa fa-plus"></i>
+                                    </div>
+                                </div>
+                                <input readonly type="text" placeholder="Enter your id" class="form-control"
+                                       th:value="${id}"
+                                />
+                            </div>
+                            <div class="input-group">
+                                <div class="input-group-prepend">
+                                    <div class="input-group-text">
+                                        <i class="fa fa-plus"></i>
+                                    </div>
+                                </div>
+                                <input type="text" id="isbn" name="isbn" placeholder="Enter isbn" class="form-control"
+                                       th:field="${bookDto.isbn}"
+                                       th:classappend="${#fields.hasErrors('isbn')?'is-invalid':''}"
+                                />
+                                <div th:each="e:${#fields.errors('isbn')}" th:text="${e}" class="invalid-feedback">
+                                </div>
+                            </div>
+                            <div class="input-group mt-3">
+                                <div class="input-group-prepend">
+                                    <div class="input-group-text">
+                                        <i class="fa fa-plus"></i>
+                                    </div>
+                                </div>
+                                <input type="text" id="title" name="title" placeholder="Enter title" class="form-control"
+                                       th:field="${bookDto.title}"
+                                       th:classappend="${#fields.hasErrors('title')?'is-invalid':''}"
+                                />
+                                <div th:each="e:${#fields.errors('title')}" th:text="${e}" class="invalid-feedback">
+                                </div>
+                            </div>
+                            <div class="input-group mt-3">
+                                <div class="input-group-prepend">
+                                    <div class="input-group-text">
+                                        <i class="fa fa-plus"></i>
+                                    </div>
+                                </div>
+                                <input type="text" id="author" name="author" placeholder="Enter author" class="form-control"
+                                       th:field="${bookDto.author}"
+                                       th:classappend="${#fields.hasErrors('author')?'is-invalid':''}"
+                                />
+                                <div th:each="e:${#fields.errors('author')}" th:text="${e}" class="invalid-feedback">
+                                </div>
+                            </div>
+                            <div class="input-group mt-3">
+                                <div class="input-group-prepend">
+                                    <div class="input-group-text">
+                                        <i class="fa fa-plus"></i>
+                                    </div>
+                                </div>
+                                <input type="number" id="edition" name="edition" placeholder="Enter edition" class="form-control"
+                                       th:field="${bookDto.edition}"
+                                       th:classappend="${#fields.hasErrors('edition')?'is-invalid':''}"
+                                />
+                                <div th:each="e:${#fields.errors('edition')}" th:text="${e}" class="invalid-feedback">
+                                </div>
+                            </div>
+                            <div class="input-group mt-3">
+                                <div class="input-group-prepend">
+                                    <div class="input-group-text">
+                                        <i class="fa fa-plus"></i>
+                                    </div>
+                                </div>
+                                <input type="number" id="price" name="price" placeholder="Enter price" class="form-control"
+                                       th:field="${bookDto.price}"
+                                       th:classappend="${#fields.hasErrors('price')?'is-invalid':''}"
+                                />
+                                <div th:each="e:${#fields.errors('price')}" th:text="${e}" class="invalid-feedback">
+                                </div>
+
+                            </div>
+                            <div class="input-group mt-3">
+                                <div class="input-group-prepend">
+                                    <div class="input-group-text">
+                                        <i class="fa fa-plus"></i>
+                                    </div>
+                                </div>
+
+                                <input type="number" id="quantity" name="quantity" placeholder="Enter quantity" class="form-control"
+                                       th:field="${bookDto.quantity}"
+                                       th:classappend="${#fields.hasErrors('quantity')?'is-invalid':''}"
+                                />
+                                <div th:each="e:${#fields.errors('quantity')}" th:text="${e}" class="invalid-feedback">
+                                </div>
+
+                            </div>
+                            <div class="container text-center">
+                                <button class="btn btn-outline-primary">Update Book</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</section>
+</body>
+</html>

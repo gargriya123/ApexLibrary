@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" th:replace="front::layout(~{::section})">
+<head>
+    <meta charset="UTF-8">
+    <title>Return Book</title>
+</head>
+<body>
+<section>
+    <div class="card mr-3 ml-3">
+        <div class="card-body">
+            <h1 class="text-center">Return Book!!</h1>
+
+            <div class="container-fluid mt-1">
+                <div class="row">
+                    <div class="col-md-8 offset-md-2">
+                        <form  th:object="${returnDto}" th:method="post" th:action="@{/returnBook}" class="mt-2">
+                            <div class="input-group">
+                               <label for="uid">User Id:</label><br>
+                                <input readonly id="uid" name="userId" th:field="${returnDto.userId}"/>
+                            </div>
+                            <div class="input-group mt-3">
+                                <label for="uname">User Name:</label><br>
+                                <input readonly id="uname" name="name" th:field="${returnDto.name}"/>
+                            </div>
+                            <div class="input-group mt-3">
+                               <label for="bid">Book Id:</label><br>
+                                <input readonly id="bid" name="bookId" th:field="${returnDto.bookId}"/>
+
+                            </div>
+                            <div class="input-group mt-3">
+                                <label for="bname">Book Title:</label><br>
+                                <input readonly id="bname" name="title" th:field="${returnDto.title}"/>
+                            </div>
+                                <div class="input-group mt-3">
+                                    <label for="iid">Issue Id:</label><br>
+                                    <input readonly id="iid" name="issueId" th:field="${returnDto.issueId}"/>
+                                </div>
+
+                            <div class="input-group mt-3">
+                                <label for="issue">Issue Date:</label><br>
+                                <input readonly id="issue" name="issueDate"  th:field="${returnDto.issueDate}"/>
+                            </div>
+                            <div class="input-group mt-3">
+                                <label for="return">Return Date:</label><br>
+                                <input readonly id="return" name="returnDate"   th:field="${returnDto.returnDate}"/>
+                            </div>
+
+                            <div class="container text-center mt-3">
+                                <button type="submit" class="btn btn-outline-primary">Return Book</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+</body>
+</html>

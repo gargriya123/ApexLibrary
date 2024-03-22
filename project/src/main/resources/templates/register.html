@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" th:replace="base::layout(~{::section})">
+<head>
+    <meta charset="UTF-8">
+    <title>Register</title>
+
+</head>
+<body>
+<section class="bg-light">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-6 offset-md-3">
+                <div class="card bg-white">
+                    <div class="text-center">
+                        <img style="width:80px;" scr="" th:src="@{/img/registrr.jpg}"/>
+                    </div>
+                    <h1 class="card-header text-center fs-4 bg-white">
+                        Register Here!!
+                    </h1>
+                     <div th:if="${session.msg}">
+                        <p class="text-center fs-4 text-success" th:text="${session.msg}"></p>
+                         <th:block th:text="${@sessionHelper.removeMessageFromSession()}"></th:block>
+                     </div>
+
+                <div class="card-body bg-white">
+                    <form  th:action="@{/do_register}"  th:object="${librarian}" th:method="post">
+                        <div class="mb-3 ">
+
+                            <div class="form-group">
+                            <label for="name">Enter Full Name</label>
+                            <input id="name" type="text" class="form-control" name="fullName" placeholder="Enter your full name"
+                                   th:field="*{fullName}"
+                                   th:classappend="${#fields.hasErrors('fullName')?'is-invalid':''}"
+                                   th:value="${librarian.fullName}"
+                                 >
+                                <div th:each="e:${#fields.errors('fullName')}" th:text="${e}" class="invalid-feedback">
+                                </div>
+                            </div>
+                            <div class="form-group">
+                            <label for="email">Enter Email</label>
+                            <input id="email" type="email" class="form-control" name="email" placeholder="Enter your email"
+                                   th:field="*{email}"
+                                   th:classappend="${#fields.hasErrors('email')?'is-invalid':''}"
+                                   th:value="${librarian.email}" />
+                            <div th:each="e:${#fields.errors('email')}" th:text="${e}" class="invalid-feedback">
+                            </div>
+                            </div>
+                                <div class="form-group">
+                                    <label for="address1">Enter Address</label>
+                                    <input id="address1" type="text" class="form-control" name="address" placeholder="Enter your address"
+                                           th:field="*{address}"
+                                           th:classappend="${#fields.hasErrors('address')?'is-invalid':''}"
+                                           th:value="${librarian.address}"/>
+
+                                    <div th:each="e:${#fields.errors('address')}" th:text="${e}" class="invalid-feedback">
+                                    </div>
+                                </div>
+                                    <div class="form-group">
+                                        <label for="contact">Enter Contact Number</label>
+                                        <input id="contact" type="text" class="form-control" name="contact" placeholder="Enter your contact number"
+                                               th:field="*{contact}"
+                                               th:classappend="${#fields.hasErrors('contact')?'is-invalid':''}"
+                                               th:value="${librarian.contact}"/>
+
+                                        <div th:each="e:${#fields.errors('contact')}" th:text="${e}" class="invalid-feedback">
+                                        </div>
+                                    </div>
+                                        <div class="form-group">
+                                            <label for="pass">Enter Password</label>
+                                            <input id="pass" type="password" class="form-control" name="password" placeholder="Enter your password"
+                                                   th:field="*{password}"
+                                                   th:classappend="${#fields.hasErrors('password')?'is-invalid':''}"
+                                                   />
+
+                                            <div th:each="e:${#fields.errors('password')}" th:text="${e}" class="invalid-feedback">
+                                            </div>
+                                        </div>
+                        <div class="form-group form-check">
+                            <label for="agreement">Accept terms and conditions</label>
+                            <input id="agreement"
+                                   type="checkbox"
+                                   name="agreement"
+                                   th:classappend="${#fields.hasErrors('agreement')?'is-invalid':''}"
+                                   class="form-check-input" >
+                            <div th:each="e:${#fields.errors('agreement')}" th:text="${e}" class="invalid-feedback">
+
+                            </div>
+                        </div>
+                        <div class="text-center">
+                        <button type="submit" class="btn btn-primary text-white">Register</button>
+                        <button type="reset" class="btn btn-danger text-white ">Reset</button>
+                            <button type="reset" class="btn btn-primary text-white "><a style="text-decoration:none;" class="text-white" href="login">Login</a></button>
+                        </div>
+                        </div>
+                    </form>
+
+    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+</body>
+</html>

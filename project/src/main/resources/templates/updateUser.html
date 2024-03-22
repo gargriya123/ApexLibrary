@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" th:replace="front::layout(~{::section})">
+<head>
+    <meta charset="UTF-8">
+    <title>update user</title>
+</head>
+<body>
+<section>
+    <div class="card mr-3 ml-3">
+        <div class="card-body">
+            <h1 class="text-center">Update User!!</h1>
+
+            <div class="container-fluid mt-1">
+                <div class="row">
+                    <div class="col-md-8 offset-md-2">
+                        <form  th:object="${userDto}" th:method="post" th:action="@{/update/{id}(id=${user.id})}" class="mt-2">
+                            <div class="input-group">
+                                <div class="input-group-prepend">
+                                    <div class="input-group-text">
+                                        <i class="fas fa-user-alt"></i>
+                                    </div>
+                                </div>
+                                <input readonly type="text" placeholder="Enter your id" class="form-control"
+                                       th:value="${id}"
+                                />
+                            </div>
+                            <div class="input-group">
+                                <div class="input-group-prepend">
+                                    <div class="input-group-text">
+                                        <i class="fas fa-user-alt"></i>
+                                    </div>
+                                </div>
+                                <input type="text" id="fullName" name="fullName" placeholder="Enter your full name" class="form-control"
+                                       th:field="${userDto.fullName}"
+                                       th:classappend="${#fields.hasErrors('fullName')?'is-invalid':''}"
+                                />
+                                <div th:each="e:${#fields.errors('fullName')}" th:text="${e}" class="invalid-feedback">
+                                </div>
+                            </div>
+                            <div class="input-group mt-3">
+                                <div class="input-group-prepend">
+                                    <div class="input-group-text">
+                                        <i class="fas fa-user-alt"></i>
+                                    </div>
+                                </div>
+                                <input type="email" id="email" name="email" placeholder="Enter your email" class="form-control"
+                                       th:field="${userDto.email}"
+                                       th:classappend="${#fields.hasErrors('email')?'is-invalid':''}"
+                                       />
+                                <div th:each="e:${#fields.errors('email')}" th:text="${e}" class="invalid-feedback">
+                                </div>
+                            </div>
+                            <div class="input-group mt-3">
+                                <div class="input-group-prepend">
+                                    <div class="input-group-text">
+                                        <i class="fa fa-briefcase"></i>
+                                    </div>
+                                </div>
+                                <input type="text" id="address" name="address" placeholder="Enter your address" class="form-control"
+                                       th:field="${userDto.address}"
+                                       th:classappend="${#fields.hasErrors('address')?'is-invalid':''}"
+                                />
+                                <div th:each="e:${#fields.errors('address')}" th:text="${e}" class="invalid-feedback">
+                                </div>
+                            </div>
+                            <div class="input-group mt-3">
+                                <div class="input-group-prepend">
+                                    <div class="input-group-text">
+                                        <i class="fa fa-phone"></i>
+                                    </div>
+                                </div>
+                                <input type="number" id="contact" name="contact" placeholder="Enter your contact number" class="form-control"
+                                       th:field="${userDto.contact}"
+                                       th:classappend="${#fields.hasErrors('contact')?'is-invalid':''}"
+                                />
+                                <div th:each="e:${#fields.errors('contact')}" th:text="${e}" class="invalid-feedback">
+                                </div>
+                            </div>
+                            <div class="input-group mt-3">
+                                <div class="input-group-prepend">
+                                    <div class="input-group-text">
+                                        <i class="fa fa-plus"></i>
+                                    </div>
+                                </div>
+                                <input type="password" id="password" name="password" placeholder="Enter password" class="form-control"
+                                       th:field="${userDto.password}"
+                                       th:classappend="${#fields.hasErrors('password')?'is-invalid':''}"
+                                />
+                                <div th:each="e:${#fields.errors('password')}" th:text="${e}" class="invalid-feedback">
+                                </div>
+
+                            </div>
+                            <div class="input-group mt-3">
+                                <div class="input-group-prepend">
+                                    <div class="input-group-text">
+                                        <i class="fa fa-plus"></i>
+                                    </div>
+                                </div>
+                                <p>Want to join Library</p>
+                                <input type="radio" id="batch1" name="joinBatch" value="Yes" class="form-control" th:field="${userDto.joinBatch}"/>Yes
+                                <br>
+                                <input type="radio" id="batch" name="joinBatch" value="No" class="form-control"  th:field="${userDto.joinBatch}"/>No
+                            </div>
+                            <div class="container text-center">
+                                <button class="btn btn-outline-primary">Update Contact</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</section>
+</body>
+</html>
