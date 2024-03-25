@@ -1,22 +1,26 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.thymeleaf.org" th:replace="front::layout(~{::section})">
+<html lang="en" xmlns:th="http://www.thymeleaf.org" th:replace="first::layout(~{::section})">
 <head>
     <meta charset="UTF-8">
-    <title>this is home page</title>
+    <title>Index page</title>
+
 </head>
 <body>
+
 <section class=".bg-secondary.bg-gradient text-center" >
     <div class="has-bg-img text-center">
         <div class="bg-img bg-cover" style="background:linear-gradient(rgba(0,0,0,.5),rgba(0,0,0,.5)),url(../img/lib2.webp); height:93vh; width:100%;">
             <div class="text-light text-center">
                 <p class="text-center text-light">Welcome to the</p>
                 <h1 class="font-weight-bold">Apex Library</h1><br>
-
+                <button class="btn btn-secondary btn-large text-white">Get Started</button>
             </div>
 
         </div>
     </div>
 
 </section>
+
+
 </body>
 </html>

@@ -5,80 +5,61 @@
     <title>Issue Book</title>
 </head>
 <body>
-<section>
-    <div class="card mr-3 ml-3">
-        <div class="card-body">
-            <h1 class="text-center">Issue Book!!</h1>
-            <div th:if="${session.msg9}">
-                <p class="text-center fs-4 text-success" th:text="${session.msg9}"></p>
-                <th:block th:text="${@sessionHelper.removeMessageFromSession()}"></th:block>
-            </div>
-            <div class="container-fluid mt-1">
-                <div class="row">
-                    <div class="col-md-8 offset-md-2">
-                        <form  th:object="${issueDto}" th:method="post" th:action="@{/issueBook}" class="mt-2">
-                            <div class="input-group">
-                                <div class="input-group-prepend">
-                                    <div class="input-group-text">
-                                        <i class="fa fa-plus"></i>
-                                    </div>
-                                </div>
-                                <input readonly id="uid" name="userId" type="text"  th:field="${issueDto.userId}"/>
-                            </div>
-                            <div class="input-group">
-                                <div class="input-group-prepend">
-                                    <div class="input-group-text">
-                                        <i class="fa fa-plus"></i>
-                                    </div>
-                                </div>
-                                <input readonly id="uname"  type="text" th:field="${user.fullName}"/>
-                            </div>
-                            <div class="input-group">
-                                <div class="input-group-prepend">
-                                    <div class="input-group-text">
-                                        <i class="fa fa-plus"></i>
-                                    </div>
-                                </div>
-                                <input readonly id="bid" name="bookId" type="text"  th:field="${issueDto.bookId}"/>
+<section class="bg-light">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-6 offset-md-3">
+                <div class="card bg-white">
+                    <div class="text-center">
+                        <img style="width:80px;" scr="" th:src="@{/img/registrr.jpg}"/>
+                    </div>
+                    <h1 class="card-header text-center fs-4 bg-white">
+                        Issue Book!!
+                    </h1>
 
-                            </div>
-                            <div class="input-group">
-                                <div class="input-group-prepend">
-                                    <div class="input-group-text">
-                                        <i class="fa fa-plus"></i>
-                                    </div>
+                    <div class="card-body bg-white">
+                            <div class="mb-3 ">
+                                <form  th:object="${issueDto}" th:method="post" th:action="@{/issueBook}" class="mt-2">
+                                <div class="form-group">
+                                    <label for="id">User Id:</label>
+                                    <input readonly id="id" type="text" class="form-control" name="userId"  th:field="${issueDto.userId}"/>
                                 </div>
-                                <input readonly id="bname"  type="text"  th:field="${book.title}"/>
 
-                            </div>
-                            <div class="input-group">
-                                <div class="input-group-prepend">
-                                    <div class="input-group-text">
-                                        <i class="fa fa-plus"></i>
-                                    </div>
+                                <div class="form-group">
+                                    <label for="uname">User Name:</label>
+                                    <input readonly id="uname" type="text" class="form-control" th:field="${user.fullName}"/>
                                 </div>
-                                <input id="issue" name="issueDate" type="date" th:field="${issueDto.issueDate}"/>
-
-                            </div>
-                            <div class="input-group">
-                                <div class="input-group-prepend">
-                                    <div class="input-group-text">
-                                        <i class="fa fa-plus"></i>
-                                    </div>
+                                <div class="form-group">
+                                    <label for="bid">Book Id:</label>
+                                    <input readonly id="bid" type="text" class="form-control"  name="bookId" th:field="${issueDto.bookId}"/>
                                 </div>
-                                <input id="return" name="returnDate" type="date"  th:field="${issueDto.returnDate}"/>
+                                <div class="form-group">
+                                    <label for="title">Book Title:</label>
+                                    <input readonly id="title" type="text" class="form-control" th:field="${book.title}"/>
+                                </div>
 
-                            </div>
+                                <div class="form-group">
+                                    <label for="idate">Issue date:</label>
+                                    <input id="idate"  class="form-control" name="issueDate" type="date" th:field="${issueDto.issueDate}" />
+                                </div>
+                                <div class="form-group">
+                                    <label for="rdate">Return Date:</label>
+                                    <input id="rdate" class="form-control" name="returnDate" type="date"  th:field="${issueDto.returnDate}"/>
+                                </div>
 
-                            <div class="container text-center">
-                                <button class="btn btn-outline-primary">Issue Book</button>
-                            </div>
+                                    <div class="container text-center mt-3">
+                                        <button class="btn btn-outline-primary">Issue Book</button>
+                                    </div>
+
                         </form>
+
                     </div>
                 </div>
             </div>
         </div>
     </div>
+    </div>
 </section>
+
 </body>
 </html>

@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" th:replace="front::layout(~{::section})">
+<head>
+    <meta charset="UTF-8">
+    <title>Profile</title>
+
+</head>
+<body>
+<section class="bg-light">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-6 offset-md-3">
+                <div class="card bg-white">
+                    <div class="text-center">
+                        <img style="width:80px;" scr="" th:src="@{/img/registrr.jpg}"/>
+                    </div>
+                    <h1 class="card-header text-center fs-4 bg-white">
+                        My Profile!!
+                    </h1>
+                    <div th:if="${session.msg14}">
+                        <p class="text-center fs-4 text-success" th:text="${session.msg14}"></p>
+                        <th:block th:text="${@sessionHelper.removeMessageFromSession()}"></th:block>
+                    </div>
+
+                    <div class="card-body bg-white">
+                        <form  th:action="@{/profile/{id}(id=${lib.id})}"  th:object="${librarianDto}" th:method="post">
+                            <div class="mb-3 ">
+                                 <div class="form-group">
+                                     <label for="id1">Id</label>
+                                     <input readonly id="id1"  class="form-control"  name="id" type="text" th:field="${lib.id}"/>
+                                 </div>
+                                <div class="form-group">
+                                    <label for="name">Full Name</label>
+                                    <input id="name" type="text" class="form-control" name="fullName"
+                                           th:field="${librarianDto.fullName}"
+                                           th:classappend="${#fields.hasErrors('fullName')?'is-invalid':''}"
+                                    />
+                                    <div th:each="e:${#fields.errors('fullName')}" th:text="${e}" class="invalid-feedback">
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label for="email">Email</label>
+                                    <input id="email" type="email" class="form-control" name="email"
+                                           th:field="${librarianDto.email}"
+                                           th:classappend="${#fields.hasErrors('email')?'is-invalid':''}"
+                                           />
+                                    <div th:each="e:${#fields.errors('email')}" th:text="${e}" class="invalid-feedback">
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label for="address1">Address</label>
+                                    <input id="address1" type="text" class="form-control" name="address"
+                                           th:field="${librarianDto.address}"
+                                           th:classappend="${#fields.hasErrors('address')?'is-invalid':''}"
+                                         />
+                                    <div th:each="e:${#fields.errors('address')}" th:text="${e}" class="invalid-feedback">
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label for="contact">Contact Number</label>
+                                    <input id="contact" type="text" class="form-control" name="contact"
+                                           th:field="${librarianDto.contact}"
+                                           th:classappend="${#fields.hasErrors('contact')?'is-invalid':''}"
+                                          />
+                                    <div th:each="e:${#fields.errors('contact')}" th:text="${e}" class="invalid-feedback">
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label for="pass">Enter Password</label>
+                                    <input id="pass" type="password" class="form-control" name="password" placeholder="Enter your password"
+                                           th:field="${librarianDto.password}"
+                                           th:classappend="${#fields.hasErrors('password')?'is-invalid':''}"
+                                    />
+                                    <div th:each="e:${#fields.errors('password')}" th:text="${e}" class="invalid-feedback">
+                                    </div>
+                                </div>
+
+                                <div class="form-group form-check">
+                                    <label for="agreement">Accept terms and conditions</label>
+                                    <input id="agreement"
+                                           type="checkbox"
+                                          required />
+                                </div>
+                                <div class="text-center">
+                                    <button type="submit" class="btn btn-primary text-white">Update</button>
+                                </div>
+                            </div>
+                        </form>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+</body>
+</html>

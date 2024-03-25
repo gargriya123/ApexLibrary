@@ -23,44 +23,42 @@
                      </div>
 
                 <div class="card-body bg-white">
-                    <form  th:action="@{/do_register}"  th:object="${librarian}" th:method="post">
+                    <form  th:action="@{/register}"  th:object="${librarian}" th:method="post">
                         <div class="mb-3 ">
 
                             <div class="form-group">
                             <label for="name">Enter Full Name</label>
                             <input id="name" type="text" class="form-control" name="fullName" placeholder="Enter your full name"
-                                   th:field="*{fullName}"
+                                   th:field="${librarian.fullName}"
                                    th:classappend="${#fields.hasErrors('fullName')?'is-invalid':''}"
-                                   th:value="${librarian.fullName}"
-                                 >
+                                   />
                                 <div th:each="e:${#fields.errors('fullName')}" th:text="${e}" class="invalid-feedback">
                                 </div>
                             </div>
                             <div class="form-group">
                             <label for="email">Enter Email</label>
                             <input id="email" type="email" class="form-control" name="email" placeholder="Enter your email"
-                                   th:field="*{email}"
+                                   th:field="${librarian.email}"
                                    th:classappend="${#fields.hasErrors('email')?'is-invalid':''}"
-                                   th:value="${librarian.email}" />
+                                  />
                             <div th:each="e:${#fields.errors('email')}" th:text="${e}" class="invalid-feedback">
                             </div>
                             </div>
                                 <div class="form-group">
                                     <label for="address1">Enter Address</label>
                                     <input id="address1" type="text" class="form-control" name="address" placeholder="Enter your address"
-                                           th:field="*{address}"
+                                           th:field="${librarian.address}"
                                            th:classappend="${#fields.hasErrors('address')?'is-invalid':''}"
-                                           th:value="${librarian.address}"/>
-
+                                           />
                                     <div th:each="e:${#fields.errors('address')}" th:text="${e}" class="invalid-feedback">
                                     </div>
                                 </div>
                                     <div class="form-group">
                                         <label for="contact">Enter Contact Number</label>
                                         <input id="contact" type="text" class="form-control" name="contact" placeholder="Enter your contact number"
-                                               th:field="*{contact}"
+                                               th:field="${librarian.contact}"
                                                th:classappend="${#fields.hasErrors('contact')?'is-invalid':''}"
-                                               th:value="${librarian.contact}"/>
+                                             />
 
                                         <div th:each="e:${#fields.errors('contact')}" th:text="${e}" class="invalid-feedback">
                                         </div>
@@ -68,7 +66,7 @@
                                         <div class="form-group">
                                             <label for="pass">Enter Password</label>
                                             <input id="pass" type="password" class="form-control" name="password" placeholder="Enter your password"
-                                                   th:field="*{password}"
+                                                   th:field="${librarian.password}"
                                                    th:classappend="${#fields.hasErrors('password')?'is-invalid':''}"
                                                    />
 
@@ -79,12 +77,8 @@
                             <label for="agreement">Accept terms and conditions</label>
                             <input id="agreement"
                                    type="checkbox"
-                                   name="agreement"
-                                   th:classappend="${#fields.hasErrors('agreement')?'is-invalid':''}"
-                                   class="form-check-input" >
-                            <div th:each="e:${#fields.errors('agreement')}" th:text="${e}" class="invalid-feedback">
-
-                            </div>
+                                   required
+                                  />
                         </div>
                         <div class="text-center">
                         <button type="submit" class="btn btn-primary text-white">Register</button>

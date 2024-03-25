@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" th:replace="front::layout(~{::section})">
+<head>
+    <meta charset="UTF-8">
+    <title>view Issued Books</title>
+</head>
+<body>
+<section>
+
+    <div class="card mr-3 ml-3">
+        <div class="card-body">
+            <h1 class="text-center">View Issued Books</h1>
+
+            <div class="text-center mt-3">
+                <form th:action="@{/viewIssuedBooks}">
+                    Search:
+                    <input type="date" name="date1"/> &nbsp;
+                    <input type="date" name="date2"/> &nbsp;
+                    <input type="text" name="status" placeholder="Enter Status"/> &nbsp;
+                    <button type="submit" class="btn btn-primary text-white">Search</button>
+                </form>
+            </div>
+            <table class="table table-striped table-bordered mt-3">
+                <thead class="table-dark">
+                <tr>
+                    <th scope="col">#ID</th>
+                    <th scope="col">User Id</th>
+                    <th scope="col">User Name</th>
+                    <th scope="col">Book Id</th>
+                    <th scope="col">Book Title</th>
+                    <th scope="col">Issued Date</th>
+                    <th scope="col">Return date</th>
+                    <th scope="col">Status</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr th:each="issue:${issues}">
+                    <td th:text="${issue.id}"></td>
+                    <td th:text="${issue.user.id}"></td>
+                    <td th:text="${issue.user.fullName}"></td>
+                    <td th:text="${issue.book.id}"></td>
+                    <td th:text="${issue.book.title}"></td>
+                    <td th:text="${issue.issueDate}"></td>
+                    <td th:text="${issue.returnDate}"></td>
+                    <td th:text="${issue.status}"></td>
+
+                </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</section>
+</body>
+</html>

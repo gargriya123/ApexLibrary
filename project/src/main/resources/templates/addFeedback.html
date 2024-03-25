@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" th:replace="userFront::layout(~{::section})">
+<head>
+    <meta charset="UTF-8">
+    <title>Issue Book</title>
+</head>
+<body>
+<section class="bg-light">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-6 offset-md-3">
+                <div class="card bg-white">
+                    <div class="text-center">
+                        <img style="width:80px;" scr="" th:src="@{/img/registrr.jpg}"/>
+                    </div>
+                    <h1 class="card-header text-center fs-4 bg-white">
+                       Feedback
+                    </h1>
+
+                    <div class="card-body bg-white">
+                        <div class="mb-3 ">
+                            <form  th:object="${bookDto}" th:method="post" th:action="@{/addFeedback/{id}(id=${book.id})}" class="mt-2">
+                                <div class="form-group">
+                                    <label for="id">Book Id:</label>
+                                    <input readonly id="id" type="text" class="form-control" name="id"  th:field="${book.id}"/>
+                                </div>
+                                <div class="form-group">
+                                    <label for="isbn">ISBN:</label>
+                                    <input readonly id="isbn" type="text" class="form-control" name="isbn" th:field="${bookDto.isbn}"/>
+                                </div>
+
+                                <div class="form-group">
+                                    <label for="title">Book Name:</label>
+                                    <input readonly id="title" type="text" class="form-control" name="title" th:field="${bookDto.title}"/>
+                                </div>
+                                <div class="form-group">
+                                    <label for="author">Author:</label>
+                                    <input readonly id="author" type="text" class="form-control"  name="author" th:field="${bookDto.author}"/>
+                                </div>
+                                <div class="form-group">
+                                    <label for="edition">Edition:</label>
+                                    <input readonly id="edition" type="text" class="form-control" name="edition" th:field="${bookDto.edition}"/>
+                                </div>
+
+                                <div class="form-group">
+                                    <label for="price">Price:</label>
+                                    <input readonly id="price"  class="form-control" name="price" type="text" th:field="${bookDto.price}" />
+                                </div>
+                                <div class="form-group">
+                                    <label for="quantity">Quantity:</label>
+                                    <input readonly id="quantity" class="form-control" name="quantity" type="text"  th:field="${bookDto.quantity}"/>
+                                </div>
+                                <div class="form-group">
+                                    <label for="feedback"> Share your Feedback here:</label>
+                                    <textarea id="feedback" class="form-control" name="feedback" cols="10" rows="5" placeholder="Share your Feedback...." th:field="${bookDto.feedback}"></textarea>
+                                </div>
+                                <div class="container text-center mt-3">
+                                    <button class="btn btn-outline-primary">Add Feedback</button>
+                                </div>
+
+                            </form>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+</body>
+</html>

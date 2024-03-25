@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.thymeleaf.org" th:replace="front::layout(~{::section})">
+<html lang="en" xmlns:th="http://www.thymeleaf.org" th:replace="userFront::layout(~{::section})">
 <head>
     <meta charset="UTF-8">
     <title>this is home page</title>
@@ -12,6 +12,10 @@
                 <p class="text-center text-light">Welcome to the</p>
                 <h1 class="font-weight-bold">Apex Library</h1><br>
 
+                <div th:if="${session.msg13}" class="text-center text-light mt-6">
+                    <p class="text-center fs-4 text-success" th:text="${session.msg13}"></p>
+                    <th:block th:text="${@sessionHelper.removeMessageFromSession()}"></th:block>
+                </div>
             </div>
 
         </div>

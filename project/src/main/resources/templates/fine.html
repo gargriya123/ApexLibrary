@@ -5,51 +5,61 @@
     <title>Fine Details</title>
 </head>
 <body>
-<section>
-    <div class="card mr-3 ml-3">
-        <div class="card-body">
-            <h1 class="text-center">Fine Details!!</h1>
+<section class="bg-light">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-6 offset-md-3">
+                <div class="card bg-white">
+                    <div class="text-center">
+                        <img style="width:80px;" scr="" th:src="@{/img/registrr.jpg}"/>
+                    </div>
+                    <h1 class="card-header text-center fs-4 bg-white">
+                        Fine Details!!
+                    </h1>
 
-            <div class="container-fluid mt-1">
-                <div class="row">
-                    <div class="col-md-8 offset-md-2">
-                        <form  th:object="${fineDto}" th:method="post" th:action="@{/fine}" class="mt-2">
-                            <div class="input-group">
-                                <label for="uid">User Id:</label><br>
-                                <input readonly id="uid" name="userId" th:field="${fineDto.userId}"/>
-                            </div>
-                            <div class="input-group mt-3">
-                                <label for="uname">User Name:</label><br>
-                                <input readonly id="uname" name="name" th:field="${fineDto.name}"/>
-                            </div>
-                            <div class="input-group mt-3">
-                                <label for="bid">Book Id:</label><br>
-                                <input readonly id="bid" name="bookId" th:field="${fineDto.bookId}"/>
+                    <div class="card-body bg-white">
+                        <div class="mb-3 ">
+                            <form  th:object="${fineDto}" th:method="post" th:action="@{/fine}" class="mt-2">
+                                <div class="form-group">
+                                    <label for="id">User Id:</label>
+                                    <input readonly id="id" type="text" class="form-control" name="userId" th:field="${fineDto.userId}" />
+                                </div>
 
-                            </div>
-                            <div class="input-group mt-3">
-                                <label for="bname">Book Title:</label><br>
-                                <input readonly id="bname" name="title" th:field="${fineDto.title}"/>
-                            </div>
-                            <div class="input-group mt-3">
-                                <label for="fine">Fine Paid:</label><br>
-                                <input readonly id="fine" name="fineValue" th:field="${fineDto.fineValue}"/>
-                            </div>
+                                <div class="form-group">
+                                    <label for="uname">User Name:</label>
+                                    <input readonly id="uname" type="text" class="form-control" name="name" th:field="${fineDto.name}" />
+                                </div>
+                                <div class="form-group">
+                                    <label for="bid">Book Id:</label>
+                                    <input readonly id="bid" type="text" class="form-control"  name="bookId" th:field="${fineDto.bookId}"/>
+                                </div>
+                                <div class="form-group">
+                                    <label for="title">Book Title:</label>
+                                    <input readonly id="title" type="text" class="form-control" name="title"  th:field="${fineDto.title}"/>
+                                </div>
+                                <div class="form-group">
+                                    <label for="fine">Fine Paid:</label><br>
+                                    <input readonly id="fine" type="text" class="form-control" name="fineValue" th:field="${fineDto.fineValue}"/>
+                                </div>
 
-                            <div class="form-group form-check mt-3">
-                                <label for="fine">Fine Paid or Not:</label><br>
-                                <input  id="check" type="checkbox" name="finePaid" required/>
-                            </div>
+                                <div class="form-group form-check ">
+                                    <label for="fine">Fine Paid or Not:</label><br>
+                                    <input  id="check" type="checkbox"  class="form-check-input" name="finePaid" required/>
+                                </div>
+                                <div class="container text-center mt-3">
+                                    <button class="btn btn-outline-primary">Return Book</button>
+                                </div>
 
-                            <div class="container text-center mt-3">
-                                <button type="submit" class="btn btn-outline-primary">Return Book</button>
-                            </div>
-                        </form>
+                            </form>
+
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
     </div>
 </section>
+
+
 </body>
 </html>

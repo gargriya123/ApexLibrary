@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.thymeleaf.org" th:replace="front::layout(~{::section})">
+<html lang="en" xmlns:th="http://www.thymeleaf.org" th:replace="userFront::layout(~{::section})">
 <head>
     <meta charset="UTF-8">
     <title>view Books</title>
@@ -10,16 +10,9 @@
     <div class="card mr-3 ml-3">
         <div class="card-body">
             <h1 class="text-center">View Books</h1>
-            <div th:if="${session.msg6}">
-                <p class="text-center fs-4 text-success" th:text="${session.msg6}"></p>
-                <th:block th:text="${@sessionHelper.removeMessageFromSession()}"></th:block>
-            </div>
-            <div th:if="${session.msg8}">
-                <p class="text-center fs-4 text-success" th:text="${session.msg8}"></p>
-                <th:block th:text="${@sessionHelper.removeMessageFromSession()}"></th:block>
-            </div>
+
             <div class="text-center mt-3">
-                <form th:action="@{/viewBooks}">
+                <form th:action="@{/userViewBooks}">
                     Search:
                     <input type="text" name="keyword" placeholder="Enter User Name"/> &nbsp;
                     <button type="submit" class="btn btn-primary text-white">Search</button>
@@ -37,7 +30,6 @@
                     <th scope="col">Price</th>
                     <th scope="col">Quantity</th>
                     <th scope="col">Feedback</th>
-                    <th scope="col">Actions</th>
                 </tr>
                 </thead>
                 <tbody>
@@ -50,15 +42,6 @@
                     <td th:text="${book.price}"></td>
                     <td th:text="${book.quantity}"></td>
                     <td th:text="${book.feedback}"></td>
-                    <td>
-                        <form th:method="get" th:action="@{/updateBook/{id}(id=${book.id})}" class="mt-2">
-                            <button type="submit" value="submit" class="btn btn-primary btn-sm">Update</button>
-                        </form>
-                        <form th:method="get" th:action="@{/deleteBook/{id}(id=${book.id})}"  class="mt-2">
-                            <button type="submit" value="submit" class="btn btn-danger btn-sm">Delete</button>
-                        </form>
-
-                    </td>
                 </tr>
                 </tbody>
             </table>

@@ -5,55 +5,64 @@
     <title>Return Book</title>
 </head>
 <body>
-<section>
-    <div class="card mr-3 ml-3">
-        <div class="card-body">
-            <h1 class="text-center">Return Book!!</h1>
+<section class="bg-light">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-6 offset-md-3">
+                <div class="card bg-white">
+                    <div class="text-center">
+                        <img style="width:80px;" scr="" th:src="@{/img/registrr.jpg}"/>
+                    </div>
+                    <h1 class="card-header text-center fs-4 bg-white">
+                        Return Book!!
+                    </h1>
 
-            <div class="container-fluid mt-1">
-                <div class="row">
-                    <div class="col-md-8 offset-md-2">
-                        <form  th:object="${returnDto}" th:method="post" th:action="@{/returnBook}" class="mt-2">
-                            <div class="input-group">
-                               <label for="uid">User Id:</label><br>
-                                <input readonly id="uid" name="userId" th:field="${returnDto.userId}"/>
-                            </div>
-                            <div class="input-group mt-3">
-                                <label for="uname">User Name:</label><br>
-                                <input readonly id="uname" name="name" th:field="${returnDto.name}"/>
-                            </div>
-                            <div class="input-group mt-3">
-                               <label for="bid">Book Id:</label><br>
-                                <input readonly id="bid" name="bookId" th:field="${returnDto.bookId}"/>
-
-                            </div>
-                            <div class="input-group mt-3">
-                                <label for="bname">Book Title:</label><br>
-                                <input readonly id="bname" name="title" th:field="${returnDto.title}"/>
-                            </div>
-                                <div class="input-group mt-3">
-                                    <label for="iid">Issue Id:</label><br>
-                                    <input readonly id="iid" name="issueId" th:field="${returnDto.issueId}"/>
+                    <div class="card-body bg-white">
+                        <div class="mb-3 ">
+                            <form  th:object="${returnDto}" th:method="post" th:action="@{/returnBook}" class="mt-2">
+                                <div class="form-group">
+                                    <label for="id">User Id:</label>
+                                    <input readonly id="id" type="text" class="form-control" name="userId" th:field="${returnDto.userId}" />
                                 </div>
 
-                            <div class="input-group mt-3">
-                                <label for="issue">Issue Date:</label><br>
-                                <input readonly id="issue" name="issueDate"  th:field="${returnDto.issueDate}"/>
-                            </div>
-                            <div class="input-group mt-3">
-                                <label for="return">Return Date:</label><br>
-                                <input readonly id="return" name="returnDate"   th:field="${returnDto.returnDate}"/>
-                            </div>
+                                <div class="form-group">
+                                    <label for="uname">User Name:</label>
+                                    <input readonly id="uname" type="text" class="form-control" name="name" th:field="${returnDto.name}" />
+                                </div>
+                                <div class="form-group">
+                                    <label for="bid">Book Id:</label>
+                                    <input readonly id="bid" type="text" class="form-control"  name="bookId" th:field="${returnDto.bookId}"/>
+                                </div>
+                                <div class="form-group">
+                                    <label for="title">Book Title:</label>
+                                    <input readonly id="title" type="text" class="form-control" name="title"  th:field="${returnDto.title}"/>
+                                </div>
+                                <div class="form-group">
+                                    <label for="iid">Issue Id:</label><br>
+                                    <input readonly id="iid" class="form-control" name="issueId" th:field="${returnDto.issueId}"/>
+                                </div>
+                                <div class="form-group">
+                                    <label for="idate">Issue date:</label>
+                                    <input readonly id="idate"  class="form-control" name="issueDate" th:field="${returnDto.issueDate}" />
+                                </div>
+                                <div class="form-group">
+                                    <label for="rdate">Return Date:</label>
+                                    <input readonly id="rdate" class="form-control" name="returnDate" th:field="${returnDto.returnDate}" />
+                                </div>
 
-                            <div class="container text-center mt-3">
-                                <button type="submit" class="btn btn-outline-primary">Return Book</button>
-                            </div>
-                        </form>
+                                <div class="container text-center mt-3">
+                                    <button class="btn btn-outline-primary">Return Book</button>
+                                </div>
+
+                            </form>
+
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
     </div>
 </section>
+
 </body>
 </html>
